@@ -1,0 +1,355 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "GeneralSans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-weight: 200 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BricolageGrotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* AnonChat Cyber Neon Dark Theme */
+    --background: 0.112 0.028 260;
+    --foreground: 0.96 0.012 240;
+    --card: 0.138 0.032 258;
+    --card-foreground: 0.96 0.012 240;
+    --popover: 0.138 0.032 258;
+    --popover-foreground: 0.96 0.012 240;
+    --primary: 0.82 0.16 198;
+    --primary-foreground: 0.1 0.02 258;
+    --secondary: 0.175 0.036 258;
+    --secondary-foreground: 0.96 0.012 240;
+    --muted: 0.175 0.036 258;
+    --muted-foreground: 0.63 0.04 245;
+    --accent: 0.72 0.22 298;
+    --accent-foreground: 0.96 0.012 240;
+    --destructive: 0.62 0.22 25;
+    --destructive-foreground: 0.96 0.012 240;
+    --border: 0.96 0.012 240 / 8%;
+    --input: 0.96 0.012 240 / 12%;
+    --ring: 0.82 0.16 198;
+
+    /* Custom AnonChat tokens */
+    --color-bg: #070b14;
+    --color-surface: #141a26;
+    --color-surface-2: #101624;
+    --color-accent-cyan: #21d4e6;
+    --color-accent-cyan-2: #19c6d6;
+    --color-accent-purple: #b44cff;
+    --color-accent-magenta: #ff3dba;
+    --color-text-primary: #f2f6ff;
+    --color-text-secondary: #a9b3c7;
+    --color-text-muted: #7e889e;
+    --color-border-subtle: rgba(255, 255, 255, 0.06);
+
+    --chart-1: 0.82 0.16 198;
+    --chart-2: 0.72 0.22 298;
+    --chart-3: 0.85 0.18 320;
+    --chart-4: 0.75 0.14 265;
+    --chart-5: 0.68 0.19 195;
+    --sidebar: 0.138 0.032 258;
+    --sidebar-foreground: 0.96 0.012 240;
+    --sidebar-primary: 0.82 0.16 198;
+    --sidebar-primary-foreground: 0.1 0.02 258;
+    --sidebar-accent: 0.175 0.036 258;
+    --sidebar-accent-foreground: 0.96 0.012 240;
+    --sidebar-border: 0.96 0.012 240 / 8%;
+    --sidebar-ring: 0.82 0.16 198;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: "GeneralSans", "Plus Jakarta Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  meta[name="theme-color"] {
+    content: #070b14;
+  }
+}
+
+@layer components {
+  /* Neon Glow Effects */
+  .glow-cyan {
+    box-shadow: 0 0 8px rgba(33, 212, 230, 0.4), 0 0 20px
+      rgba(33, 212, 230, 0.2);
+  }
+
+  .glow-cyan-sm {
+    box-shadow: 0 0 4px rgba(33, 212, 230, 0.3), 0 0 10px
+      rgba(33, 212, 230, 0.15);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 8px rgba(180, 76, 255, 0.4), 0 0 20px
+      rgba(180, 76, 255, 0.2);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 12px rgba(33, 212, 230, 0.6);
+  }
+
+  /* Neon ring CTA button */
+  .btn-find-stranger {
+    position: relative;
+    background: linear-gradient(135deg, #b44cff 0%, #ff3dba 50%, #21d4e6 100%);
+    border: none;
+    border-radius: 50px;
+    padding: 14px 40px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 2px rgba(33, 212, 230, 0.3), 0 0 0 6px
+      rgba(180, 76, 255, 0.2), 0 0 0 12px rgba(255, 61, 186, 0.12), 0 0 30px
+      rgba(180, 76, 255, 0.35), 0 4px 20px rgba(33, 212, 230, 0.25);
+  }
+
+  .btn-find-stranger:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 0 2px rgba(33, 212, 230, 0.5), 0 0 0 8px
+      rgba(180, 76, 255, 0.3), 0 0 0 16px rgba(255, 61, 186, 0.18), 0 0 40px
+      rgba(180, 76, 255, 0.5), 0 6px 30px rgba(33, 212, 230, 0.35);
+  }
+
+  .btn-find-stranger:active {
+    transform: translateY(0) scale(0.99);
+  }
+
+  .btn-find-stranger:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Gender pill selector */
+  .gender-pill {
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .gender-pill:hover {
+    border-color: rgba(33, 212, 230, 0.35);
+    color: var(--color-text-primary);
+    background: rgba(33, 212, 230, 0.06);
+  }
+
+  .gender-pill.selected {
+    border-color: var(--color-accent-cyan);
+    color: var(--color-accent-cyan);
+    background: rgba(33, 212, 230, 0.1);
+    box-shadow: 0 0 12px rgba(33, 212, 230, 0.25), inset 0 0 8px
+      rgba(33, 212, 230, 0.08);
+  }
+
+  /* Surface card */
+  .surface-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 16px;
+  }
+
+  /* Stats divider */
+  .stats-divider {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
+  }
+
+  /* Message bubbles */
+  .msg-outgoing {
+    background: linear-gradient(135deg, #19c6d6, #21d4e6);
+    color: #05111a;
+    border-radius: 18px 18px 4px 18px;
+    box-shadow: 0 2px 12px rgba(33, 212, 230, 0.25);
+  }
+
+  .msg-incoming {
+    background: var(--color-surface-2);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 18px 18px 18px 4px;
+  }
+
+  /* Spinner animation */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spin-slow {
+    animation: spin-slow 1.2s linear infinite;
+  }
+
+  /* Pulse dot */
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+      box-shadow: 0 0 4px #22c55e;
+    }
+    50% {
+      opacity: 0.6;
+      box-shadow: 0 0 8px #22c55e;
+    }
+  }
+
+  .pulse-dot {
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+
+  /* Searching dots animation */
+  @keyframes dot-bounce {
+    0%,
+    80%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+    40% {
+      transform: translateY(-6px);
+      opacity: 1;
+    }
+  }
+
+  .dot-1 {
+    animation: dot-bounce 1.2s ease-in-out infinite 0s;
+  }
+  .dot-2 {
+    animation: dot-bounce 1.2s ease-in-out infinite 0.2s;
+  }
+  .dot-3 {
+    animation: dot-bounce 1.2s ease-in-out infinite 0.4s;
+  }
+
+  /* Background grid pattern */
+  .bg-grid {
+    background-image: linear-gradient(
+        rgba(33, 212, 230, 0.03) 1px,
+        transparent 1px
+      ), linear-gradient(90deg, rgba(33, 212, 230, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Glow orb effect */
+  .glow-orb-cyan {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(33, 212, 230, 0.08) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  .glow-orb-purple {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(180, 76, 255, 0.08) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  /* Chat input */
+  .chat-input {
+    background: var(--color-surface);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: var(--color-text-primary);
+    padding: 12px 20px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    font-family: inherit;
+    font-size: 14px;
+  }
+
+  .chat-input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .chat-input:focus {
+    border-color: rgba(33, 212, 230, 0.4);
+    box-shadow: 0 0 0 2px rgba(33, 212, 230, 0.1);
+  }
+
+  /* Send button */
+  .send-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-accent-cyan);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    color: #05111a;
+  }
+
+  .send-btn:hover {
+    background: var(--color-accent-cyan-2);
+    box-shadow: 0 0 14px rgba(33, 212, 230, 0.4);
+    transform: scale(1.05);
+  }
+
+  .send-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
